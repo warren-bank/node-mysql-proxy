@@ -33,10 +33,10 @@ options:
     Notes:
       * "mysql" proxy server:
         - requires a mysql client or "driver"
-          ex: mysql.exe --port 33306
+          ex: mysql --port 33306
       * "http" and "https" proxy servers:
         - requires a http/s client
-          ex: curl.exe -X POST --data-binary "SELECT * FROM db_name.table_name ORDER BY id ASC" "http://localhost:33306/"
+          ex: echo -e 'SELECT * FROM db_name.table_name;' | curl -X POST --data-binary @- 'http://localhost:33306/'
 
 "--db-host" <host>
     MySQL server host.

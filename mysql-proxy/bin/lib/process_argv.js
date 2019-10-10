@@ -51,9 +51,9 @@ const bootstrap_server = function(start_server) {
     db_password:       argv_vals["--db-password"]      || '',
     pool:              argv_vals["--pool"]             || 10,
     hold_connection:   argv_vals["--hold-connection"]  || false,
-    logs_dir:          argv_vals["--logs-dir"]         || fs.realpathSync(`${__dirname}/../.data/logs`, {encoding: 'utf8'}),
+    logs_dir:          argv_vals["--logs-dir"]         || fs.realpathSync(`${__dirname}/../../../.data/logs`, {encoding: 'utf8'}),
     encrypt_fields:    argv_vals["--encrypt-fields"]   || 'ENCRYPT_\\d+',
-    encrypt_secret:    argv_vals["--encrypt-secret"]   || fs.realpathSync(`${__dirname}/../.data/secret.txt`, {encoding: 'utf8'})
+    encrypt_secret:    argv_vals["--encrypt-secret"]   || fs.realpathSync(`${__dirname}/../../../.data/secret.txt`, {encoding: 'utf8'})
   })
 }
 

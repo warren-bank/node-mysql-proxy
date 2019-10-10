@@ -1,7 +1,8 @@
 @echo off
 
 set _cd=%cd%
-set log="%~dpn0.log"
+set log_s="%~dpn0.server.log"
+set log_c="%~dpn0.client.log"
 
 rem :: ---------------------------------------------------------------
 rem :: creat a new temporary work area
@@ -43,7 +44,7 @@ cd /D "%_cd%"
 rem :: ---------------------------------------------------------------
 rem :: run proxy example
 
-start "proxy-test" node "%tempdir%\mysqlproxy.js"
+start "proxy-test" node "%tempdir%\mysqlproxy.js" ^>%log_s% ^2^>^&^1
 
 rem :: ---------------------------------------------------------------
 rem :: send queries from client
@@ -57,7 +58,7 @@ set PATH=C:\PortableApps\MariaDB\10.4.8\bin;%PATH%
 set __sql=SHOW DATABASES; USE test; SELECT database(); SHOW TABLES;
 
 cls
-echo %__sql% | mysql --port 3307 --table >%log% 2>&1
+echo %__sql% | mysql --port 3307 --table >%log_c% 2>&1
 
 rem :: ---------------------------------------------------------------
 rem :: remove temporary work area

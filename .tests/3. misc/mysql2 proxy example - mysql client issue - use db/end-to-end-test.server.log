@@ -1,0 +1,65 @@
+connection
+Warning: got packets out of order. Expected 3 but received 0
+proxying query: SHOW DATABASES
+rows [ TextRow { Database: 'information_schema' },
+  TextRow { Database: 'mysql' },
+  TextRow { Database: 'performance_schema' },
+  TextRow { Database: 'test' } ]
+columns [ { catalog: 'def',
+    schema: 'information_schema',
+    name: 'Database',
+    orgName: 'SCHEMA_NAME',
+    table: 'SCHEMATA',
+    orgTable: 'SCHEMATA',
+    characterSet: 224,
+    columnLength: 256,
+    columnType: 253,
+    flags: 1,
+    decimals: 0 } ]
+(node:4288) [DEP0079] DeprecationWarning: Custom inspection function on Objects via .inspect() is deprecated
+Warning: got packets out of order. Expected 12 but received 0
+proxying query: SELECT DATABASE()
+rows [ TextRow { 'DATABASE()': null } ]
+columns [ { catalog: 'def',
+    schema: '',
+    name: 'DATABASE()',
+    orgName: '',
+    table: '',
+    orgTable: '',
+    characterSet: 224,
+    columnLength: 136,
+    columnType: 253,
+    flags: 0,
+    decimals: 39 } ]
+Warning: got packets out of order. Expected 18 but received 0
+Warning: got packets out of order. Expected 20 but received 0
+proxying query: SELECT database()
+rows [ TextRow { 'database()': null } ]
+columns [ { catalog: 'def',
+    schema: '',
+    name: 'database()',
+    orgName: '',
+    table: '',
+    orgTable: '',
+    characterSet: 224,
+    columnLength: 136,
+    columnType: 253,
+    flags: 0,
+    decimals: 39 } ]
+Warning: got packets out of order. Expected 26 but received 0
+proxying query: SHOW TABLES
+result undefined
+Warning: got packets out of order. Expected 28 but received 0
+events.js:167
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Connection lost: The server closed the connection.
+    at Socket.Connection.stream.on (C:\node-mysql-proxy\.tests\3. misc\mysql2 proxy example - mysql client issue - use db\proxy-test\node_modules\mysql2\lib\connection.js:86:31)
+    at Socket.emit (events.js:182:13)
+    at TCP._handle.close (net.js:610:12)
+Emitted 'error' event at:
+    at Connection._notifyError (C:\node-mysql-proxy\.tests\3. misc\mysql2 proxy example - mysql client issue - use db\proxy-test\node_modules\mysql2\lib\connection.js:212:12)
+    at Socket.Connection.stream.on (C:\node-mysql-proxy\.tests\3. misc\mysql2 proxy example - mysql client issue - use db\proxy-test\node_modules\mysql2\lib\connection.js:92:12)
+    at Socket.emit (events.js:182:13)
+    at TCP._handle.close (net.js:610:12)

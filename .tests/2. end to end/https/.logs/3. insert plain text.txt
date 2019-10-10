@@ -1,0 +1,35 @@
+{
+  "code": 200,
+  "error": null,
+  "data": [
+    {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 16386,
+      "warningStatus": 0,
+      "stateChanges": {
+        "systemVariables": {},
+        "schema": "mysql_proxy_test",
+        "trackStateChange": null
+      }
+    },
+    {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 1,
+      "info": "",
+      "serverStatus": 2,
+      "warningStatus": 0
+    },
+    [
+      {
+        "id": 1,
+        "field_1": "foo",
+        "field_2": "bar",
+        "field_3": "baz"
+      }
+    ]
+  ]
+}

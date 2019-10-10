@@ -1,0 +1,26 @@
+{
+  "code": 200,
+  "error": null,
+  "data": [
+    {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 16386,
+      "warningStatus": 0,
+      "stateChanges": {
+        "systemVariables": {},
+        "schema": "mysql_proxy_test",
+        "trackStateChange": null
+      }
+    },
+    [
+      {
+        "ENCRYPT_001": "foo",
+        "ENCRYPT_002": "bar",
+        "ENCRYPT_003": "baz"
+      }
+    ]
+  ]
+}

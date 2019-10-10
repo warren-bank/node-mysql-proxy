@@ -1,0 +1,49 @@
+{
+  "code": 200,
+  "error": null,
+  "data": [
+    {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 258,
+      "warningStatus": 1
+    },
+    {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 2,
+      "warningStatus": 0
+    },
+    {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 16386,
+      "warningStatus": 0,
+      "stateChanges": {
+        "systemVariables": {},
+        "schema": "mysql_proxy_test",
+        "trackStateChange": null
+      }
+    },
+    {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 2,
+      "warningStatus": 0
+    },
+    [
+      {
+        "Table": "table_1",
+        "Create Table": "CREATE TABLE `table_1` (\n  `id` mediumint(9) NOT NULL AUTO_INCREMENT,\n  `field_1` varchar(255) DEFAULT NULL,\n  `field_2` varchar(255) DEFAULT NULL,\n  `field_3` varchar(255) DEFAULT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=latin1"
+      }
+    ]
+  ]
+}

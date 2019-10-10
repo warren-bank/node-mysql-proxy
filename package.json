@@ -1,0 +1,23 @@
+{
+  "name": "@warren-bank/node-mysql-proxy",
+  "version": "1.0.0",
+  "description": "An extremely lightweight MySQL proxy server. SQL writes to DB are logged. Supports conditional AES symmetric key encryption of fields.",
+  "license": "GPL-2.0",
+  "bin": {
+    "mysql-proxy": "mysql-proxy/bin/mysql-proxy.js"
+  },
+  "dependencies": {
+    "@warren-bank/node-process-argv": "^1.1.0",
+    "crypto-js": "^3.1.9-1",
+    "mysql2": "^1.7.0"
+  },
+  "author": {
+    "name": "Warren R. Bank",
+    "email": "warren.r.bank@gmail.com",
+    "url": "https://github.com/warren-bank"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/warren-bank/node-mysql-proxy"
+  }
+}

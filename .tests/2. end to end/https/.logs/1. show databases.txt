@@ -1,0 +1,18 @@
+{
+  "code": 200,
+  "error": null,
+  "data": [
+    {
+      "Database": "information_schema"
+    },
+    {
+      "Database": "mysql"
+    },
+    {
+      "Database": "performance_schema"
+    },
+    {
+      "Database": "test"
+    }
+  ]
+}

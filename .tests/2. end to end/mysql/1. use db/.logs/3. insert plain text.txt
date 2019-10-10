@@ -1,0 +1,1 @@
+ERROR 1064 (_____) at line 3: No database selected

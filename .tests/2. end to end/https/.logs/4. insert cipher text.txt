@@ -1,0 +1,41 @@
+{
+  "code": 200,
+  "error": null,
+  "data": [
+    {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 16386,
+      "warningStatus": 0,
+      "stateChanges": {
+        "systemVariables": {},
+        "schema": "mysql_proxy_test",
+        "trackStateChange": null
+      }
+    },
+    {
+      "fieldCount": 0,
+      "affectedRows": 1,
+      "insertId": 2,
+      "info": "Records: 1  Duplicates: 0  Warnings: 0",
+      "serverStatus": 2,
+      "warningStatus": 0
+    },
+    [
+      {
+        "id": 1,
+        "field_1": "foo",
+        "field_2": "bar",
+        "field_3": "baz"
+      },
+      {
+        "id": 2,
+        "field_1": "KyMAsJM4bC7A6TirK9czZA==",
+        "field_2": "uh1tSQO1kM1O4YuWvmLgUQ==",
+        "field_3": "qbLtkmePnT/yb5mgYFhjZQ=="
+      }
+    ]
+  ]
+}

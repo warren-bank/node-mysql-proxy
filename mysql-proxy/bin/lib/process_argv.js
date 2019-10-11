@@ -16,7 +16,7 @@ const argv_flags = {
   "--hold-connection": {bool:  true},
   "--logs-dir":        {file:  "path-exists"},
   "--encrypt-fields":  {regex: true},
-  "--encrypt-secret":  {file:  "path-exists"}
+  "--encrypt-secret":  {file:  "text"}
 }
 
 const argv_flag_aliases = {
@@ -53,7 +53,7 @@ const bootstrap_server = function(start_server) {
     hold_connection:   argv_vals["--hold-connection"]  || false,
     logs_dir:          argv_vals["--logs-dir"]         || fs.realpathSync(`${__dirname}/../../../.data/logs`, {encoding: 'utf8'}),
     encrypt_fields:    argv_vals["--encrypt-fields"]   || /ENCRYPT_\d+/,
-    encrypt_secret:    argv_vals["--encrypt-secret"]   || fs.realpathSync(`${__dirname}/../../../.data/secret.txt`, {encoding: 'utf8'})
+    encrypt_secret:    argv_vals["--encrypt-secret"]   || fs.readFileSync(fs.realpathSync(`${__dirname}/../../../.data/secret.txt`, {encoding: 'utf8'}), {encoding: 'utf8'})
   })
 }
 

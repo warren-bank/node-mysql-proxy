@@ -134,6 +134,7 @@ __how it works__:
 * all queries are rewritten as they pass through the proxy, such that:
   * in `SELECT` statements:
     * in each request:
+      * fields that are assigned a literal string value are conditionally encrypted when the field is given an alias that matches the `--encrypt-fields` regex
       * values in `WHERE` clauses are conditionally encrypted when the field is given an alias that matches the `--encrypt-fields` regex
     * in each response:
       * values are conditionally decrypted when the field is given an alias that matches the `--encrypt-fields` regex
@@ -146,14 +147,14 @@ __how it works__:
       * `INSERT into table_1 (field_1, field_2, field_3) SELECT "foo" as ENCRYPT_001, "bar" as ENCRYPT_002, "baz" as ENCRYPT_003;`
     * written to log file:
       ```SQL
-        -- 1570666693250
+        -- 1570783565067
         -- INSERT into table_1 (field_1, field_2, field_3) SELECT "foo" as ENCRYPT_001, "bar" as ENCRYPT_002, "baz" as ENCRYPT_003;
-           INSERT into table_1 (field_1, field_2, field_3) SELECT "YJCIhWsjPGvVg8+GvXI73A==" as ENCRYPT_001, "yRiq4qBtN63A7ic98cyYGw==" as ENCRYPT_002, "LwveizDZowT/+Jg3NWnLNA==" as ENCRYPT_003;
+           INSERT into table_1 (field_1, field_2, field_3) SELECT "rEaqocFLxO2K0V13lweg4Q==" as ENCRYPT_001, "QgLALzZQeE+nSjMfoZkoJQ==" as ENCRYPT_002, "58WZ9otn/F98C4UfZPubrQ==" as ENCRYPT_003;
       ```
 
 __additional thoughts/comments__:
 
-* this proxy does not supported the following features:
+* this proxy does not support the following features:
   * replicate writes to multiple databases
   * manage permissions or access control
 * this proxy does not attempt to:

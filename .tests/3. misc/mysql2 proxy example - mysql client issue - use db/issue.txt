@@ -1,1 +1,2 @@
 https://github.com/sidorares/node-mysql2/issues/1029
+https://github.com/sidorares/node-mysql2/pull/1030

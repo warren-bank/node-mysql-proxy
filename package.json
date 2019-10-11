@@ -1,6 +1,6 @@
 {
   "name": "@warren-bank/node-mysql-proxy",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "An extremely lightweight MySQL proxy server. SQL writes to DB are logged. Supports conditional AES symmetric key encryption of fields.",
   "license": "GPL-2.0",
   "bin": {

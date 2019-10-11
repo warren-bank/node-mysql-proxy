@@ -1,3 +1,5 @@
+require('./lib/mysql-monkeypatch')
+
 const mysql         = require('mysql2')
 const proxy         = require('../proxy')
 const handle_events = require('./lib/mysql')

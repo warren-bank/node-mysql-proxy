@@ -67,6 +67,10 @@ const handle_events = function({server, onQuery, db}) {
       })
     })
 
+    cl_conn.on('init_db', (schemaName) => {
+      cl_conn.emit('query', `USE ${schemaName};`)
+    })
+
     cl_conn.on('field_list', (table, fields) => {
       cl_conn.writeEof()
     })

@@ -185,17 +185,6 @@ __additional thoughts/comments__:
 
 - - - -
 
-#### Issues:
-
-* `USE database_name;`
-  * works over `http` and `https`
-  * does __not__ work over `mysql`
-    * tested with: official MariaDB command-line client
-  * workaround:
-    * queries need to fully specify tables: `database_name.table_name`
-
-- - - -
-
 #### Credits:
 
 * [mysql2](https://github.com/sidorares/node-mysql2) by [Andrey Sidorov](https://github.com/sidorares)

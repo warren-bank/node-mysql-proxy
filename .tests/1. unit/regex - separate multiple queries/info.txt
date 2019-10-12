@@ -1,0 +1,13 @@
+--------------------------------------------------------------------------------
+
+https://stackoverflow.com/a/28843298
+
+regex:
+  /\s*;\s*(?=([^']*'[^']*')*[^']*$)/
+
+examples (as given):
+  * "select * from table1 where col1 = 'abc;de'; select * from table2;"
+    => "select * from table1 where col1 = 'abc;de'"
+       "select * from table2"
+
+--------------------------------------------------------------------------------

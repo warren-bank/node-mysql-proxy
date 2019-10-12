@@ -69,33 +69,31 @@ const init = (encrypt_fields, encrypt_secret) => {
     }
   }
 
+  const fields_pattern = encrypt_fields.source
+
+  // quoted string literal
+  const QSL = ((ref) => `(["'])((?:\\\\\\\\|\\\\\\${ref}|\\${ref}\\${ref}|(?!\\${ref})[^\\\\])*)\\${ref}`)(2)
+
+  // ==============================================================
+  // SELECT clause
+  //   ex: `SELECT "foo" as ENCRYPT_001, "bar" as ENCRYPT_002;`
+  // ==============================================================
+  // WHERE clause
+  //   ex: `WHERE ENCRYPT_001 = "foo" AND ENCRYPT_002 = "bar";`
+  // ==============================================================
+
+  const regex = {
+      select: new RegExp(`([\\b\\s])${QSL}(\\s*(?:as|AS)\\s*${fields_pattern}(?:[\\b\\s,;]|$))`, 'g')
+    , where:  new RegExp(`([\\b\\s]${fields_pattern}\\s*=\\s)${QSL}((?:[\\b\\s;]|$))`, 'g')
+  }
+
   const encryptQuery = (query) => {
-    let encrypted_query = query
-    let regex
-
-    const fields_pattern = encrypt_fields.source
-
-    // ==============================================================
-    // SELECT clause
-    //   ex: `SELECT "foo" as ENCRYPT_001, "bar" as ENCRYPT_002;`
-    // ==============================================================
-    regex = new RegExp(`([\\b\\s]["])([^"]+)(["]\\s*(?:as|AS)\\s*${fields_pattern}(?:[\\b\\s,;]|$))`, 'g')
-
-    encrypted_query = encrypted_query.replace(regex, ($0, $1, $2, $3) => {
-      return `${$1}${encrypt($2, encrypt_secret)}${$3}`
-    })
-
-    // ==============================================================
-    // WHERE clause
-    //   ex: `WHERE ENCRYPT_001 = "foo" AND ENCRYPT_002 = "bar";`
-    // ==============================================================
-    regex = new RegExp(`([\\b\\s]${fields_pattern}\\s*=\\s*["])([^"]+)(["](?:[\\b\\s;]|$))`, 'g')
-
-    encrypted_query = encrypted_query.replace(regex, ($0, $1, $2, $3) => {
-      return `${$1}${encrypt($2, encrypt_secret)}${$3}`
-    })
-
-    return encrypted_query
+    for (let key in regex) {
+      query = query.replace(regex[key], ($match, $1, $2, $3, $4) => {
+        return `${$1}${$2}${encrypt($3, encrypt_secret)}${$2}${$4}`
+      })
+    }
+    return query
   }
 
   const decryptResult = (result) => {

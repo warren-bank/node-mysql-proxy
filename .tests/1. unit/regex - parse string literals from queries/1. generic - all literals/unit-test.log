@@ -1,0 +1,40 @@
+============================================================
+RegExp("([\"'])((\\\\{2})*|(.*?[^\\\\](\\\\{2})*))\\1", "g") 
+
+[FAIL] The following are valid string literals that did not match the regular expression: 
+  'foo ''bar'' baz @ ''hello'' world'
+  "foo ""bar"" baz @ ""hello"" world"
+
+============================================================
+RegExp("([\"'])((\\\\{2})*|(.*?(?<!\\\\)(\\\\{2})*))\\1", "g") 
+
+[FAIL] The following are valid string literals that did not match the regular expression: 
+  'foo ''bar'' baz @ ''hello'' world'
+  "foo ""bar"" baz @ ""hello"" world"
+
+============================================================
+RegExp("([\"'])((\\\\{2})*|(.*?[^\\\\](\\\\{2})*)|(\\1\\1)*|(.*?[^\\1](\\1\\1)*))\\1", "g") 
+
+[FAIL] The following are valid string literals that did not match the regular expression: 
+  'foo ''bar'' baz @ ''hello'' world'
+  "foo ""bar"" baz @ ""hello"" world"
+
+============================================================
+RegExp("([\"'])((\\\\{2})*|(.*?[^\\\\](\\\\{2})*)|(\\1\\1)*|(.*?(?<!\\1)(\\1\\1)*))\\1", "g") 
+
+[FAIL] The following are valid string literals that did not match the regular expression: 
+  'foo ''bar'' baz @ ''hello'' world'
+  "foo ""bar"" baz @ ""hello"" world"
+
+============================================================
+RegExp("([\"'])((?:\\\\{2})*|(?:.*?[^\\\\](?:\\\\{2})*))\\1", "g") 
+
+[FAIL] The following are valid string literals that did not match the regular expression: 
+  'foo ''bar'' baz @ ''hello'' world'
+  "foo ""bar"" baz @ ""hello"" world"
+
+============================================================
+RegExp("([\"'])((?:\\\\\\\\|\\\\\\1|\\1\\1|(?!\\1)[^\\\\])*)\\1", "g") 
+
+[PASS]
+

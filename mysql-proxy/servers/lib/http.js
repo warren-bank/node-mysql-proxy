@@ -5,6 +5,11 @@ const {debug} = require('../../lib/debug')
 
 const handle_events = function({server, onQuery, db}) {
 
+  const regex = {
+      split_queries: /\s*;\s*(?=(?:[^']*'[^']*'|[^"]*"[^"]*")*[^'"]*$)/g
+    , new_lines:     /\s*[\r\n]+\s*/g
+  }
+
   const sendResponse = (res, data) => {
     let headers = {
       "Content-Type":                     "application/json",
@@ -57,7 +62,7 @@ const handle_events = function({server, onQuery, db}) {
         else {
           let post_data
           post_data = Buffer.concat(buffers, bytes)
-          post_data = post_data.toString('utf8').replace(/\s*[\r\n]+\s*/g, ' ').trim()
+          post_data = post_data.toString('utf8').replace(regex.new_lines, ' ').trim()
           resolve(post_data)
         }
       })
@@ -111,7 +116,7 @@ const handle_events = function({server, onQuery, db}) {
       })
       .then((post_data) => {
         // split multiple queries into Array
-        let queries  = post_data.split(/\s*;\s*/).filter(query => query.length).map(query => query + ';')
+        let queries  = post_data.split(regex.split_queries).filter(query => !!query).map(query => query + ';')
         let promises = queries.map(query => onQuery(query, db_conn))
 
         // return Promise that resolves after all the individual database queries have received a result

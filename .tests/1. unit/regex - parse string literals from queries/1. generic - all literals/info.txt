@@ -1,0 +1,62 @@
+--------------------------------------------------------------------------------
+
+https://www.got-it.ai/solutions/sqlquerychat/sql-help/data-query/using-escape-characters-and-quotes-in-sql-querychat/
+
+summary:
+  * string literals can be delimited with either:
+    - single quote
+    - double quote
+  * either such character can be included within the string literal by either:
+    - using 2 adjacent characters
+        examples:
+          * 'foo ''bar'' baz'
+          * "foo ""bar"" baz"
+    - using backslash to escape
+        examples:
+          * 'foo \'bar\' baz'
+          * "foo \"bar\" baz"
+  * caveats:
+    - backslash characters can themselves be escaped by another adjacent backslash character
+        examples (bad):
+          * 'foo \\'bar\\' baz'
+          * "foo \\"bar\\" baz"
+        examples (good):
+          * 'foo \\\'bar\\\' baz'
+          * "foo \\\"bar\\\" baz"
+
+--------------------------------------------------------------------------------
+
+https://stackoverflow.com/a/17231632
+
+regex:
+  /(["'])((\\{2})*|(.*?[^\\](\\{2})*))\1/
+
+examples (as given):
+  "hello\"world"  matches "hello\"world"
+  "hello\\"world" matches "hello\\"
+
+--------------------------------------------------------------------------------
+
+https://www.regular-expressions.info/backref.html
+
+important points to remember:
+  * Backreferences Cannot Be Used Inside Character Classes
+
+thoughts:
+  * can backreferences be used in a negative lookbehind?
+
+--------------------------------------------------------------------------------
+
+strategy for test:
+  * tests are written with regex literals, since they are much easier to read/write/understand
+  * a regex literal can be converted to its String representation as follows:
+    {
+      let rgx = /(["'])((\\{2})*|(.*?[^\\](\\{2})*))\1/
+      let str = JSON.stringify( rgx.source )
+
+      let obj = new RegExp( eval(str) )
+      console.log((rgx.source === obj.source)? 'OK' : 'bad')
+      console.log(str)
+    }
+
+--------------------------------------------------------------------------------

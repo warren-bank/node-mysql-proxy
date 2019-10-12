@@ -1,0 +1,31 @@
+============================================================
+RegExp("\\s*;\\s*(?=([^']*'[^']*')*[^']*$)", "g") 
+
+[FAIL] The following queries contain valid string literals that were not correctly parsed by the regular expression: 
+  SELECT '' as ENCRYPT_001;
+  SELECT 'foo bar baz ; hello world' as ENCRYPT_001;
+  SELECT "foo bar baz ; hello world" as ENCRYPT_001;
+  SELECT 'foo "bar" baz ; "hello" world' as ENCRYPT_001;
+  SELECT "foo 'bar' baz ; 'hello' world" as ENCRYPT_001;
+  SELECT 'foo ''bar'' baz ; ''hello'' world' as ENCRYPT_001;
+  SELECT "foo ""bar"" baz ; ""hello"" world" as ENCRYPT_001;
+  SELECT 'foo \'bar\' baz ; \'hello\' world' as ENCRYPT_001;
+  SELECT "foo \"bar\" baz ; \"hello\" world" as ENCRYPT_001;
+  SELECT 'foo \\\'bar\\\' baz ; \\\'hello\\\' world' as ENCRYPT_001;
+  SELECT "foo \\\"bar\\\" baz ; \\\"hello\\\" world" as ENCRYPT_001;
+
+============================================================
+RegExp("\\s*;\\s*(?=(?:[^']*'[^']*')*[^']*$)", "g") 
+
+[FAIL] The following queries contain valid string literals that were not correctly parsed by the regular expression: 
+  SELECT "foo bar baz ; hello world" as ENCRYPT_001;
+  SELECT "foo 'bar' baz ; 'hello' world" as ENCRYPT_001;
+  SELECT "foo ""bar"" baz ; ""hello"" world" as ENCRYPT_001;
+  SELECT "foo \"bar\" baz ; \"hello\" world" as ENCRYPT_001;
+  SELECT "foo \\\"bar\\\" baz ; \\\"hello\\\" world" as ENCRYPT_001;
+
+============================================================
+RegExp("\\s*;\\s*(?=(?:[^']*'[^']*'|[^\"]*\"[^\"]*\")*[^'\"]*$)", "g") 
+
+[PASS]
+
